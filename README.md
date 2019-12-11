@@ -34,19 +34,19 @@ Ruby 2.6.3 rails 5.2.3
   - 原権利者と興行主の一対一のチャットルームで行う
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1bU_3WPEMxcRiV94sb6cJihNxTidMcQESrLN_RdzyUfo/edit#gid=1588112418
+https://docs.google.com/spreadsheets/d/1lppB0xRANGaI6Fa02ugMfOiJHyZKDMoKCtik2pwSgXc/edit?usp=sharing
 
 ## ER図
-https://docs.google.com/spreadsheets/d/1lppB0xRANGaI6Fa02ugMfOiJHyZKDMoKCtik2pwSgXc/edit#gid=0
+https://docs.google.com/spreadsheets/d/1bU_3WPEMxcRiV94sb6cJihNxTidMcQESrLN_RdzyUfo/edit?usp=sharing
 
 ## テーブル設計
-https://docs.google.com/spreadsheets/d/1Jlbd8Tu0Fsccyz6u2ZVGsxhPwIgK04idApW03RzLt5c/edit#gid=0
+https://docs.google.com/spreadsheets/d/1Jlbd8Tu0Fsccyz6u2ZVGsxhPwIgK04idApW03RzLt5c/edit?usp=sharing
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1BI_NL49tly4XA1sd8o8hAh91KN7XjWh5XQFMB_1QO7s/edit#gid=0
+https://docs.google.com/spreadsheets/d/1BI_NL49tly4XA1sd8o8hAh91KN7XjWh5XQFMB_1QO7s/edit?usp=sharing
 
 ## ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1iFlUU3ihAxkJz7LnJfWUCaR7JwkUymnZMxdAJNkyOsM/edit#gid=0
+https://docs.google.com/spreadsheets/d/1iFlUU3ihAxkJz7LnJfWUCaR7JwkUymnZMxdAJNkyOsM/edit?usp=sharing
 
 ## 使用予定gem
 - devise
