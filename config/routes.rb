@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  root 'tops#index'
   devise_for :right_holders
   devise_for :clients
-  root 'films#index'
-  
+
   resources :films
 
   if Rails.env.development?
