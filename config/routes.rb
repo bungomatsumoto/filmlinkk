@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :right_holders
   devise_for :clients
   root 'films#index'
   
