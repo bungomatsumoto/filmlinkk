@@ -1,0 +1,70 @@
+<%= form_with(model: @film, local: true) do |f| %>
+
+  <% if @film.errors.any? %>
+    <div id="error_explanation">
+      <% @film.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="film_fill">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :director %><br>
+    <%= f.text_field :director %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :production_year %><br>
+    <%= f.text_field :production_year %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :production_country %><br>
+    <%= f.text_field :production_country %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :running_time %><br>
+    <p><%= f.text_field :running_time %>min</p>
+  </div>
+
+<%# 複数枚アップロードの方法確認 %>
+  <div class="film_fill">
+    <%= f.label :images %><br>
+    <%= image_tag(@film.images.url) if @film.images && @film.image.url %>
+    <%= f.file_field :images %>
+    <%= f.hidden_field :images_cache %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :intro %><br>
+    <%= f.text_area :intro %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :cast %><br>
+    <%= f.text_field :cast %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :genre %><br>
+    <%= f.text_field :genre %>
+  </div>
+
+  <div class="film_fill">
+    <%= f.label :document %><br>
+    <%# <%= image_tag(@film.images.url) if @film.images && @film.image.url %> %>
+    <%= f.file_field :document %>
+    <%# <%= f.hidden_field :images_cache %> %>
+  </div>
+
+  <div class="button">
+    <p><%= f.submit %></p>
+  </div>
+
+<% end %>
