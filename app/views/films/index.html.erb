@@ -1,4 +1,50 @@
-<h1>Films#index</h1>
-<p>Find me in app/views/films/index.html.erb</p>
+<h3><全作品一覧</h3>
 
-<%=  %>
+<p>作品名をクリックすると詳細が見られます。詳細画面からは上映権を持つ人にメッセージを送ることができます！<br>作品名、監督名などのキーワードや、制作年で検索ができます</p>
+
+<%# 検索フィールド %>
+
+ <div class="film_index">
+    <table class="sticky_table">
+      <thead>
+        <tr>
+          <th class="blank">タイトル</th>
+          <th class="table_header">監督</th>
+          <th class="table_header">製作年</th>
+          <th class="table_header">製作国</th>
+          <th class="table_header">イメージ</th>
+          <th class="table_header">解説</th>
+          <th class="option_order">キャスト</th>
+          <th class="option_order">ジャンル</th>
+          <% if current_user.id == right_holder.id %>
+            <th class="option_order">&nbsp;</th>
+          <% end %>
+        </tr>
+
+      <% @films.each do |film| %>
+
+        <tr>
+          <td id="film_title" class="film_data"><%= link_to film.title, film_path(film.id) %></td>
+          <td class="film_data"><%= film.director %></td>
+          <td class="film_data"><%= film.production_year %></td>
+          <td class="film_data"><%= film.production_country %></td>
+          <td class="film_data"><%= image_tag post.image.to_s %></td>
+          <td class="film_data"><%= film.document %></td>
+          <td class="film_data"><%= film.cast %></td>
+          <td class="film_data"><%= film.genre %></td>
+          <% if current_user.id == right_holder.id %>
+            <td class="option_order">
+            <%= link_to "削除", film_path(film.id), method: :delete, data: { confirm: t('view.destroy_confirm')} %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+      </thead>
+    </table>
+  </div>
+
+  <% if current_user.id == right_holder.id %>
+    <%= link_to "作品登録画面へ", new_film_path %>
+  <% end %>
+
+    <%= link_to "興行主一覧へ",  %>
