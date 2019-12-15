@@ -1,5 +1,6 @@
 class FilmsController < ApplicationController
-  before_action :get_id_film, only: [:show, :update, :destroy]
+  before_action :get_id_film, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_right_holder!, only: [:new, :edit, :update, :destroy]
 
   def index
     @films = Film.all

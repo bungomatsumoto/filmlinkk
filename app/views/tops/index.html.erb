@@ -1,29 +1,29 @@
-<h2>Filmlinkk</h2>
+   <h2>Filmlinkk</h2>
 
-<div>
-  <p>映画館の上映作品を求めている人と
-  作品のコンテンツホルダーが
-  ニーズを直接話し合えるアプリです。
-  <br>
-  Filmlinkkは映画の裾野を広げる一助になりたいと考えています。</p>
-</div>
+    <div>
+      <p>映画館の上映作品を求めている人と
+      作品のコンテンツホルダーが
+      ニーズを直接話し合えるアプリです。
+      <br>
+      Filmlinkkは映画の裾野を広げる一助になりたいと考えています。</p>
+    </div>
 
-<div>
-  <% if client_signed_in? %>
-    <p><%= current_client.name %>さん</p>
-      <%= link_to "興行主一覧へ", new_client_session_path %>
-      <%= link_to "logout", destroy_client_session_path, method: :delete %>
-  <% elsif right_holder_signed_in? %>
-    <p><%= right_holder.name %>さん</p>
-      <%= link_to "作品一覧へ", new_client_session_path %>
-      <%= link_to "logout", destroy_right_holder_session_path, method: :delete %>
-  <% else %>
-    <P>上映作品を探している方</P>
-    <%= link_to "login", new_client_session_path %>
-    <%= link_to "sign_in", new_client_registration_path %>
+    <div>
+      <% if client_signed_in? %>
+        <p><%= current_client.name %>さん</p>
+          <%= link_to "作品一覧へ", new_client_session_path %>
+          <%= link_to "logout", destroy_client_session_path, method: :delete %>
+      <% elsif right_holder_signed_in? %>
+        <p><%= right_holder.name %>さん</p>
+          <%= link_to "作品一覧へ", new_client_session_path %>
+          <%= link_to "logout", destroy_right_holder_session_path, method: :delete %>
+      <% else %>
+        <P>上映作品を探している方</P>
+        <%= link_to "login", new_client_session_path %>
+        <%= link_to "sign_in", new_client_registration_path %>
 
-    <P>作品の上映権をお持ちの方</P>
-    <%= link_to "login", new_right_holder_session_path %>
-    <%= link_to "sign_in", new_right_holder_registration_path %>
-  <% end %>
-</div>
+        <P>作品の上映権をお持ちの方</P>
+        <%= link_to "login", new_right_holder_session_path %>
+        <%= link_to "sign_in", new_right_holder_registration_path %>
+      <% end %>
+    </div>
