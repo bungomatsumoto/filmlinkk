@@ -19,6 +19,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 
+gem 'country_select'
+
 
 group :development, :test do
 
