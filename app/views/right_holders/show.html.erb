@@ -1,0 +1,24 @@
+<h1>RightHolders#show</h1>
+
+  <div class="right_holder_item">
+    <p class="right_holder_item_label"></p>
+    <p class="right_holder_item_detail"><%= @right_holder.name %></p>
+  </div>
+
+  <div class="right_holder_item">
+    <p class="right_holder_item_label"></p>
+    <p class="right_holder_item_detail"><%= @right_holder.email %></p>
+  </div>
+
+  <div class="right_holder_item">
+    <p class="right_holder_item_label"></p>
+    <p class="right_holder_item_detail"><%= @right_holder.intro %></p>
+  </div>
+
+  <div class="right_holder_item">
+    <p class="right_holder_item_label"></p>
+    <p class="right_holder_item_detail"><%= image_tag(@right_holder.icon.url) if @right_holder.icon.present? %></p>
+  </div>
+
+<%= link_to "作品一覧", films_path %>
+<%= link_to "興行主一覧", right_holders_path %>

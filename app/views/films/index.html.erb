@@ -22,8 +22,9 @@
             <th class="option_order">&nbsp;</th>
           <% end %>
         </tr>
+      </thead>
 
-
+      <tbody>
         <tr>
           <td id="film_title" class="film_data"><%= link_to film.title, film_path(film.id) %></td>
           <td class="film_data"><%= film.director %></td>
@@ -40,12 +41,12 @@
           <% end %>
         </tr>
       <% end %>
-      </thead>
+      </tbody>
     </table>
   </div>
 
     <% if right_holder_signed_in? %>
-      <%= link_to "作品登録画面へ", new_film_path %>
+      <%= link_to "作品を登録", new_film_path %>
     <% end %>
 
-    <%# <%= link_to "興行主一覧へ", clients_path %> %>
+    <%= link_to "興行主一覧へ", clients_path %>
