@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'tops/index'
   root 'tops#index'
   devise_for :right_holders, path: 'right_holders', controllers: {
     sessions: 'right_holders/sessions',
