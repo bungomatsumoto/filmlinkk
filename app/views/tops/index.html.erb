@@ -11,11 +11,11 @@
     <div>
       <% if client_signed_in? %>
         <p><%= current_client.name %>さん</p>
-          <%= link_to "作品一覧へ", new_client_session_path %>
+          <%= link_to "作品一覧へ", films_path %>
           <%= link_to "logout", destroy_client_session_path, method: :delete %>
       <% elsif right_holder_signed_in? %>
-        <p><%= right_holder.name %>さん</p>
-          <%= link_to "作品一覧へ", new_client_session_path %>
+        <p><%= current_right_holder.name %>さん</p>
+          <%= link_to "作品一覧へ", films_path %>
           <%= link_to "logout", destroy_right_holder_session_path, method: :delete %>
       <% else %>
         <P>上映作品を探している方</P>
