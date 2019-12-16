@@ -1,0 +1,39 @@
+<h3>Clients#show</h3>
+
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= @client.name %></p>
+  </div>
+
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= @client.screen_name %></p>
+  </div>
+
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= @client.email %></p>
+  </div>
+
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= @client.country %></p>
+  </div>
+
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= @client.city %></p>
+  </div>
+
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= @client.intro %></p>
+  </div>
+
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= image_tag(@client.icon.url) if @client.icon.present? %></p>
+  </div>
+
+<%= link_to "興行主一覧", clients_path %>
+<%= link_to "作品一覧", films_path %>

@@ -1,0 +1,26 @@
+<h3>Clients#index</h3>
+
+<div class="client_index">
+  <table class="">
+    <tr>
+      <th class="table_header">名前</th>
+      <th class="table_header">劇場またはイベント名</th>
+      <th class="table_header">国</th>
+    </tr>
+
+    <%= @clients.each do |c| %>
+
+    <tr>
+      <th class="client_data"><%= link_to c.name, client_path(client.id) %></th>
+      <th class="client_data"><%= c.screen_name %></th>
+      <th class="client_data"><%= c.county %></th>
+    </tr>
+
+    <% end %>
+  </table>
+</div>
+
+<%= link_to "作品一覧", films_path %>
+<% if right_holder_signed_in? %>
+  <%= link_to "作品を登録", new_film_path %>
+<% end %>

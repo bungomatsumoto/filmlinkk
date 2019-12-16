@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'right_holders/show'
+  get 'clients/index'
+  get 'clients/show'
   root 'tops#index'
+  
   devise_for :right_holders, path: 'right_holders', controllers: {
     sessions: 'right_holders/sessions',
     passwords: 'right_holders/passwords',
@@ -12,6 +16,8 @@ Rails.application.routes.draw do
     registrations: 'clients/registrations',
     confirmations: 'clients/confirmations'
   }
+  resources :clients, only: [:index, :show]
+  resources :right_holders, only: [:show]
 
   resources :films
 
