@@ -36,9 +36,7 @@
 <%# 複数枚アップロードの方法確認 %>
   <div class="film_fill">
     <%= f.label :images %><br>
-    <%= image_tag(@film.images.url) if @film.images && @film.image.url %>
-    <%= f.file_field :images %>
-    <%= f.hidden_field :images_cache %>
+    <%= f.file_field :images, multiple: true %>
   </div>
 
   <div class="film_fill">
