@@ -21,7 +21,12 @@
 </div>
 
 <div>
-  <P>イメージ:<br><%= @film.images %></p>
+  <ul>
+  <% @film.images each do |image| %>
+    <li><%= image_tag image.url %></li>
+    <%# image.to_s? %>
+  <% end %>
+  </ul>
 </div>
 
 <div>
@@ -39,3 +44,6 @@
 <div>
   <P>資料（脚本など）:<br><%= @film.document %></p>
 </div>
+
+    <%= link_to "作品一覧へ", films_path %>
+    <%= link_to "作品一覧へ", films_path %>

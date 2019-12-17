@@ -18,8 +18,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
+gem 'carrierwave'
+gem 'mini_magick'
 
-gem 'country_select'
+# gem 'country_select'
 
 
 group :development, :test do

@@ -40,12 +40,12 @@ class FilmsController < ApplicationController
 
   private
 
-  def film_params
-    params.require(:film).permit(:title, :intro, :director, images: [], :document, :production_year, :production_country, :running_time, :cast, :genre)
-  end
+    def film_params
+      params.require(:film).permit(:title, :intro, :director, {images: []}, :document, :production_year, :production_country, :running_time, :cast, :genre)
+    end
 
-  def get_id_film
-    @film = current_right_holder.films.find(params[:id])
-  end
+    def get_id_film
+      @film = current_right_holder.films.find(params[:id])
+    end
 
 end

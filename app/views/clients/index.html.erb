@@ -8,12 +8,12 @@
       <th class="table_header">国</th>
     </tr>
 
-    <%= @clients.each do |c| %>
+    <% @clients.each do |c| %>
 
     <tr>
-      <th class="client_data"><%= link_to c.name, client_path(client.id) %></th>
+      <th class="client_data"><%= link_to c.name, client_path(c.id) %></th>
       <th class="client_data"><%= c.screen_name %></th>
-      <th class="client_data"><%= c.county %></th>
+      <th class="client_data"><%= c.country %></th>
     </tr>
 
     <% end %>

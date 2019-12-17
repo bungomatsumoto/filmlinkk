@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_093228) do
+ActiveRecord::Schema.define(version: 2019_12_17_024650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_12_13_093228) do
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "right_holder_id"
+    t.index ["right_holder_id"], name: "index_films_on_right_holder_id"
   end
 
   create_table "right_holders", force: :cascade do |t|
@@ -73,4 +75,5 @@ ActiveRecord::Schema.define(version: 2019_12_13_093228) do
     t.index ["reset_password_token"], name: "index_right_holders_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "films", "right_holders"
 end
