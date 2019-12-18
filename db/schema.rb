@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_014717) do
+ActiveRecord::Schema.define(version: 2019_12_18_044017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2019_12_18_014717) do
     t.index ["confirmation_token"], name: "index_clients_on_confirmation_token", unique: true
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "right_holder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id", "right_holder_id"], name: "index_conversations_on_client_id_and_right_holder_id", unique: true
+    t.index ["client_id"], name: "index_conversations_on_client_id"
+    t.index ["right_holder_id"], name: "index_conversations_on_right_holder_id"
   end
 
   create_table "films", force: :cascade do |t|
@@ -86,5 +96,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_014717) do
 
   add_foreign_key "bookings", "clients"
   add_foreign_key "bookings", "films"
+  add_foreign_key "conversations", "clients"
+  add_foreign_key "conversations", "right_holders"
   add_foreign_key "films", "right_holders"
 end
