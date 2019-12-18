@@ -30,7 +30,11 @@
           <td class="film_data"><%= film.director %></td>
           <td class="film_data"><%= film.production_year %></td>
           <td class="film_data"><%= film.production_country %></td>
-          <td class="film_data"><%= image_tag film.images.to_s %></td>
+          <td class="film_data">
+            <% film.images.each do |image| %>
+            <%= image_tag(image.url) %>
+            <% end %>
+          </td>
           <td class="film_data"><%= film.document %></td>
           <td class="film_data"><%= film.cast %></td>
           <td class="film_data"><%= film.genre %></td>

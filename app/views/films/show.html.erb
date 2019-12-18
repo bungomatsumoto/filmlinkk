@@ -22,7 +22,7 @@
 
 <div>
   <ul>
-  <% @film.images each do |image| %>
+  <% @film.images.each do |image| %>
     <li><%= image_tag image.url %></li>
     <%# image.to_s? %>
   <% end %>
