@@ -30,7 +30,7 @@
 
   <div class="film_fill">
     <%= f.label :running_time %><br>
-    <p><%= f.text_field :running_time %>min</p>
+    <%= f.text_field :running_time %>min
   </div>
 
 <%# 複数枚アップロードの方法確認 %>
@@ -56,9 +56,7 @@
 
   <div class="film_fill">
     <%= f.label :document %><br>
-    <%# <%= image_tag(@film.images.url) if @film.images && @film.image.url %> %>
     <%= f.file_field :document %>
-    <%# <%= f.hidden_field :images_cache %> %>
   </div>
 
   <div class="button">
