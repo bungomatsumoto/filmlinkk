@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources :films
   resources :bookings, only: [:create, :destroy]
 
+  resources :conversations do
+    resources :messages
+  end
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
