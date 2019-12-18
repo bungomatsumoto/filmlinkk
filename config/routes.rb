@@ -14,10 +14,12 @@ Rails.application.routes.draw do
     registrations: 'clients/registrations',
     confirmations: 'clients/confirmations'
   }
+  # deviseで不足しているルーティングを作成
   resources :clients, only: [:index, :show]
   resources :right_holders, only: [:show]
 
   resources :films
+  resources :bookings, only: [:create, :destroy]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
