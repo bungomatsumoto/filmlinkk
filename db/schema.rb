@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_044017) do
+ActiveRecord::Schema.define(version: 2019_12_18_064144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 2019_12_18_044017) do
     t.index ["right_holder_id"], name: "index_films_on_right_holder_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "conversation_id"
+    t.bigint "client_id"
+    t.bigint "right_holder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_messages_on_client_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["right_holder_id"], name: "index_messages_on_right_holder_id"
+  end
+
   create_table "right_holders", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -99,4 +111,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_044017) do
   add_foreign_key "conversations", "clients"
   add_foreign_key "conversations", "right_holders"
   add_foreign_key "films", "right_holders"
+  add_foreign_key "messages", "clients"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "right_holders"
 end
