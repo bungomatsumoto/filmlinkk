@@ -21,12 +21,14 @@
 </div>
 
 <div>
+  <% if @film.images? %>
   <ul>
-  <% @film.images.each do |image| %>
-    <li><%= image_tag image.url %></li>
-    <%# image.to_s? %>
-  <% end %>
+    <% @film.images.each do |image| %>
+      <li><%= image_tag image.url %></li>
+      <%# image.to_s? %>
+    <% end %>
   </ul>
+  <% end %>
 </div>
 
 <div>
@@ -45,5 +47,15 @@
   <P>資料（脚本など）:<br><%= @film.document %></p>
 </div>
 
-    <%= link_to "作品一覧へ", films_path %>
-    <%= link_to "作品一覧へ", films_path %>
+<% if client_signed_in? %>
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path, client_id: current_client.id, right_holder_id: @film.right_holder.id, method: :post %></p>
+  </div>
+<% elsif right_holder_signed_in? %>
+  <% if current_right_holder.id == @film.right_holder.id %>
+    <%= link_to "作品情報を編集", edit_film_path(@film) %>
+  <% end %>
+<% end %>
+
+<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>

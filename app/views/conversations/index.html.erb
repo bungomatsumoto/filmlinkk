@@ -1,0 +1,7 @@
+<h3><%= t('activerecord.models.message')+t('view.index') %></h3>
+<div>
+  <% @conversations.each do |conversation| %>
+    <%= link_to conversation.client.name, conversation_messages_path(conversation) %>
+    <%= link_to conversation.right_holder.name, conversation_messages_path(conversation) %>
+  <% end %>
+</div>

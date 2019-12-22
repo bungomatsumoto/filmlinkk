@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     if resource_class == Client
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :screen_name, :country, :city, :intro, :icon, :icon_cache])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :screen_name, :country, :city, :intro, :icon, :icon_cache])
     elsif resource_class == RightHolder
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :intro, :icon, :icon_cache])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :intro, :icon, :icon_cache])
     else
       super
     end

@@ -1,17 +1,17 @@
-<h3>Clients#index</h3>
+<h3><%= t('activerecord.models.client')+t('view.index') %></h3>
 
 <div class="client_index">
   <table class="">
     <tr>
-      <th class="table_header">名前</th>
-      <th class="table_header">劇場またはイベント名</th>
-      <th class="table_header">国</th>
+      <th class="table_header"><%= t('activerecord.attributes.client.name') %></th>
+      <th class="table_header"><%= t('activerecord.attributes.client.screen_name') %></th>
+      <th class="table_header"><%= t('activerecord.attributes.client.country') %></th>
     </tr>
 
     <% @clients.each do |c| %>
 
     <tr>
-      <th class="client_data"><%= link_to c.name, client_path(c.id) %></th>
+      <th class="client_data"><%= link_to c.name, client_path(c) %></th>
       <th class="client_data"><%= c.screen_name %></th>
       <th class="client_data"><%= c.country %></th>
     </tr>
@@ -20,5 +20,10 @@
   </table>
 </div>
 
-<%= link_to "作品一覧", films_path %>
-
+<% if client_signed_in? %>
+    <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
+<% elsif right_holder_signed_in? %>
+  <%= link_to t('view.profile'), right_holder_path(current_right_holder.id) %>
+  <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
+<% end %>
+<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>

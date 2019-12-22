@@ -7,6 +7,6 @@ class Conversation < ApplicationRecord
     where(["(conversations.client_id = ? AND conversations.right_holder_id = ?)", client_id, right_holder_id])
   end
 
-  validates_uniqueness_of :client_id, scope: :right_holder_id
+  # validates_uniqueness_of :client_id, scope: :right_holder_id
 
 end
