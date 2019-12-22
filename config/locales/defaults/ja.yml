@@ -204,3 +204,16 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  view:
+    index: 一覧
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+    signup: 新規登録
+    logout: ログアウト
+    profile: プロフィール確認
+    this_page: 上記の内容を
+    send_message: メッセージを送る
+    this_client: 興行主へ
+    this_right_holder: 原権利者へ
+    registrate_film: 映画を登録

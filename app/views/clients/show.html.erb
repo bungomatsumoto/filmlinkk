@@ -1,4 +1,4 @@
-<h3>Clients#show</h3>
+<h3><%= t('activerecord.models.client')+t('view.show') %></h3>
 
   <div class="client_item">
     <p class="client_item_label"></p>
@@ -35,5 +35,17 @@
     <p class="client_item_detail"><%= image_tag(@client.icon.url) if @client.icon.present? %></p>
   </div>
 
-<%= link_to "興行主一覧", clients_path %>
-<%= link_to "作品一覧", films_path %>
+  <% if right_holder_signed_in? %>
+  <div class="client_item">
+    <p class="client_item_label"></p>
+    <p class="client_item_detail"><%= link_to t('view.this_client')+t('view.send_message'), conversations_path, right_holder_id: current_right_holder.id, client_id: @client.id, method: :post %></p>
+  </div>
+  <% end %>
+
+  <% if @client == current_client %>
+    <%= link_to t('view.this_page')+t('view.edit'), edit_client_registration_path(@client) %>
+    <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
+  <% end %>
+
+<%= link_to t('activerecord.models.client')+t('view.index'), clients_path %>
+<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>

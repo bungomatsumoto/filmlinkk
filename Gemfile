@@ -21,12 +21,16 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
-# gem 'country_select'
+gem 'devise-i18n'
 
+# gem 'country_select'
 
 group :development, :test do
 
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do

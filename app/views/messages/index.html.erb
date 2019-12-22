@@ -1,0 +1,24 @@
+<% if client_signed_in? %>
+  <%= @right_holder.name %>とのチャットルーム
+  <% @messages.each do |m| %>
+    <% if m.body.present? %>
+      <%= m.client.name %> <%= m.message_time %>
+      <%= m.body %>
+    <% end %>
+  <% end %>
+
+<% elsif right_holder_signed_in? %>
+  <%= @client.name %>とのチャットルーム
+  <% @messages.each do |m| %>
+    <% if m.body.present? %>
+      <%= m.right_holder.name %> <%= m.message_time %>
+      <%= m.body %>
+    <% end %>
+  <% end %>
+
+<% end %>
+
+<%= form_with(model: [@conversation, @message]) do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit "メッセージを送る"%>
+<% end %>
