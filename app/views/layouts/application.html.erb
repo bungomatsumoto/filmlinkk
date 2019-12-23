@@ -7,16 +7,32 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
 
-    <%= yield %>
+    <div class="wrapper">
+      <header class="header_container">
+        <h2 id="header_title">Filmlinkk</h2>
+        <p>映画上映をもっと手軽に</p>
+        <div class="bg"></div>
+      </header>
+
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+
+      <footer>
+        <div class="footer_container">
+          <p><small>(C)2019 Filmlinkk. All Rights Reserved.</small></p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
