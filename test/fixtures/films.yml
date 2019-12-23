@@ -4,7 +4,7 @@ one:
   title: MyString
   film_intro: MyText
   director: MyString
-  images: 
+  image:
   document: MyText
   production_year: 1
   production_country: MyString
@@ -16,7 +16,7 @@ two:
   title: MyString
   film_intro: MyText
   director: MyString
-  images: 
+  image:
   document: MyText
   production_year: 1
   production_country: MyString
