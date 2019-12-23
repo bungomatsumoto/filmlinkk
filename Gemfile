@@ -32,6 +32,12 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  gem 'spring'
+  gem 'spring-commands-rspec'
+
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -48,6 +54,8 @@ end
 group :test do
 
   gem 'capybara', '>= 2.15'
+  gem 'webdrivers'
+  gem 'launchy'
   gem 'selenium-webdriver'
 
   gem 'chromedriver-helper'
