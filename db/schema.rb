@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_064144) do
+ActiveRecord::Schema.define(version: 2019_12_23_034544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_064144) do
     t.string "title", default: "", null: false
     t.text "intro"
     t.string "director"
-    t.json "images"
+    t.text "image"
     t.text "document"
     t.integer "production_year"
     t.string "production_country"
