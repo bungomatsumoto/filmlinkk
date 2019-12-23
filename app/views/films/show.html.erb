@@ -1,23 +1,23 @@
-<h3>作品詳細</h3>
+<h3><%= t('activerecord.models.film')+t('view.show') %></h3>
 
 <div>
-  <P>作品名:<br><%= @film.title %></p>
+  <P><%= t('activerecord.attributes.film.title') %>:<br><%= @film.title %></p>
 </div>
 
 <div>
-  <P>監督:<br><%= @film.director %></p>
+  <P><%= t('activerecord.attributes.film.director') %>:<br><%= @film.director %></p>
 </div>
 
 <div>
-  <P>製作年:<br><%= @film.production_year %></p>
+  <P><%= t('activerecord.attributes.film.production_year') %>:<br><%= @film.production_year %></p>
 </div>
 
 <div>
-  <P>製作国:<br><%= @film.production_country %></p>
+  <P><%= t('activerecord.attributes.film.production_country') %>:<br><%= @film.production_country %></p>
 </div>
 
 <div>
-  <P>上映時間:<br><%= @film.running_time %></p>
+  <P><%= t('activerecord.attributes.film.running_time') %>:<br><%= @film.running_time %></p>
 </div>
 
 <div>
@@ -25,30 +25,34 @@
 </div>
 
 <div>
-  <P>解説:<br><%= @film.intro %></p>
+  <P><%= t('activerecord.attributes.film.intro') %>:<br><%= @film.intro %></p>
 </div>
 
 <div>
-  <P>キャスト:<br><%= @film.cast %></p>
+  <P><%= t('activerecord.attributes.film.cast') %>:<br><%= @film.cast %></p>
 </div>
 
 <div>
-  <P>ジャンル:<br><%= @film.genre %></p>
+  <P><%= t('activerecord.attributes.film.genre') %>:<br><%= @film.genre %></p>
 </div>
 
-<div>
-  <P>資料（脚本など）:<br><%= @film.document %></p>
-</div>
 
 <% if client_signed_in? %>
   <div class="client_item">
     <p class="client_item_label"></p>
+    <% if @booking.present? %>
+      <%= link_to '上映権終了を申告する', booking_path(id: @booking.id), method: :delete %>
+    <% else %>
+      <%= link_to '上映できることを明らかにします', bookings_path(film_id: @film.id), method: :post %>
+    <% end %>
     <p class="client_item_detail"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path(client_id: current_client.id, right_holder_id: @film.right_holder.id), method: :post %></p>
+    <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
   </div>
 <% elsif right_holder_signed_in? %>
   <% if current_right_holder.id == @film.right_holder.id %>
-    <%= link_to "作品情報を編集", edit_film_path(@film) %>
+    <%= link_to t('view.this_page')+t('view.edit'), edit_film_path(@film) %>
   <% end %>
+  <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
 <% end %>
 
 <%= link_to t('activerecord.models.film')+t('view.index'), films_path %>

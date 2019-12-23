@@ -39,6 +39,7 @@
   <div class="client_item">
     <p class="client_item_label"></p>
     <p class="client_item_detail"><%= link_to t('view.this_client')+t('view.send_message'), conversations_path(right_holder_id: current_right_holder.id, client_id: @client.id), method: :post %></p>
+    <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
   </div>
   <% end %>
 
@@ -47,5 +48,6 @@
     <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
   <% end %>
 
+<%= link_to "#{@client.name}さんが上映できる映画一覧", bookings_path %>
 <%= link_to t('activerecord.models.client')+t('view.index'), clients_path %>
 <%= link_to t('activerecord.models.film')+t('view.index'), films_path %>

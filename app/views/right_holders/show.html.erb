@@ -1,4 +1,4 @@
-<h1>RightHolders#show</h1>
+<h3>RightHolders#show</h3>
 
   <div class="right_holder_item">
     <p class="right_holder_item_label"></p>
@@ -21,7 +21,8 @@
   </div>
 
   <% if @right_holder == current_right_holder %>
-    <%= link_to "マイページを編集", edit_right_holder_registration_path(@right_holder) %>
+    <%= link_to t('view.this_page')+t('view.edit'), edit_right_holder_registration_path(@right_holder) %>
+    <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
   <% end %>
 <%= link_to t('activerecord.models.film')+t('view.index'), films_path %>
-<%= link_to "興行主一覧", clients_path %>
+<%= link_to t('activerecord.models.client')+t('view.index'), clients_path %>
