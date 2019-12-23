@@ -205,12 +205,18 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   view:
+    title: タイトル
+    director: 監督
     index: 一覧
     show: 詳細
     edit: 編集
+    update: 更新
     destroy: 削除
-    signup: 新規登録
+    back: 戻る
+    signup: ユーザー登録
     logout: ログアウト
+    login: ログイン
+    signin: ユーザー登録
     profile: プロフィール確認
     this_page: 上記の内容を
     send_message: メッセージを送る

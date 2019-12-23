@@ -3,7 +3,8 @@ ja:
     models:
       film: 映画
       client: 興行主
-      right_holder: 原権利者
+      right_holder: 著作権者
+      converstation: チャットルーム
       message: メッセージ
     attributes:
       film:
@@ -22,10 +23,10 @@ ja:
         country: 国
         city: 都市
         email: メールアドレス
-        intro: 案内
+        intro: 劇場またはイベント紹介
         icon: アイコン
       right_holder:
         name: 名前
         email: メールアドレス
-        intro: 案内
+        intro: 自己紹介
         icon: アイコン

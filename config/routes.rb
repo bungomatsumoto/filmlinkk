@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :right_holders, only: [:show]
 
   resources :films
-  resources :bookings, only: [:create, :destroy]
+  resources :bookings, only: [:create, :destroy, :index]
 
   resources :conversations do
     resources :messages
