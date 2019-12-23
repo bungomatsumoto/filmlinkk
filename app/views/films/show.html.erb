@@ -21,14 +21,7 @@
 </div>
 
 <div>
-  <% if @film.images? %>
-  <ul>
-    <% @film.images.each do |image| %>
-      <li><%= image_tag image.url %></li>
-      <%# image.to_s? %>
-    <% end %>
-  </ul>
-  <% end %>
+  <%= image_tag(@film.image.url) if @film.image.present? %>
 </div>
 
 <div>

@@ -48,7 +48,7 @@ class FilmsController < ApplicationController
   private
 
   def film_params
-    params.require(:film).permit(:title, :intro, :director, :document, :production_year, :production_country, :running_time, :cast, :genre, {images: []})
+    params.require(:film).permit(:title, :intro, :director, :document, :production_year, :production_country, :running_time, :cast, :genre, :image)
   end
 
   # def search_params
