@@ -38,7 +38,7 @@
   <% if right_holder_signed_in? %>
   <div class="client_item">
     <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= link_to t('view.this_client')+t('view.send_message'), conversations_path, right_holder_id: current_right_holder.id, client_id: @client.id, method: :post %></p>
+    <p class="client_item_detail"><%= link_to t('view.this_client')+t('view.send_message'), conversations_path(right_holder_id: current_right_holder.id, client_id: @client.id), method: :post %></p>
   </div>
   <% end %>
 

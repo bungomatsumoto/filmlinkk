@@ -6,16 +6,15 @@ class ConversationsController < ApplicationController
   end
 
   def create
+    # if authenticate_client! || authenticate_right_holder!
     if Conversation.between(params[:client_id], params[:right_holder_id]).present?
       @conversation = Conversation.between(params[:client_id], params[:right_holder_id]).first
     else
-      # client = params[:client_id]
-      # right_holder = params[:right_holder_id]
-      # binding.pry
       @conversation = Conversation.create!(conversation_params)
     end
     # いずれにせよ@conversationのメッセージ一覧へ
     redirect_to conversation_messages_path(@conversation)
+    # end
   end
 
   private
@@ -25,6 +24,6 @@ class ConversationsController < ApplicationController
   end
 
   def authenticate_filmlinkk!
-    authenticate_client! || authenticate_right_holder!
+    current_client.nil? ? authenticate_right_holder! : authenticate_client!
   end
 end

@@ -50,7 +50,7 @@
 <% if client_signed_in? %>
   <div class="client_item">
     <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path, client_id: current_client.id, right_holder_id: @film.right_holder.id, method: :post %></p>
+    <p class="client_item_detail"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path(client_id: current_client.id, right_holder_id: @film.right_holder.id), method: :post %></p>
   </div>
 <% elsif right_holder_signed_in? %>
   <% if current_right_holder.id == @film.right_holder.id %>

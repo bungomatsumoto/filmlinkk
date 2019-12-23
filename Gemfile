@@ -21,6 +21,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'ransack'
 gem 'devise-i18n'
 
 # gem 'country_select'
