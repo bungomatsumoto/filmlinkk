@@ -1,9 +1,16 @@
 class FilmsController < ApplicationController
+  before_action :set_search, only: [:index]
   before_action :get_id_film, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_right_holder!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @films = Film.all
+    # if params[:q]
+      @q = Film.ransack(params[:q])
+      @films = @q.result(distinct: true)
+    # else
+    #   @films = Film.all
+    # end
+    # @films = Film.all
   end
 
   def new
@@ -44,8 +51,17 @@ class FilmsController < ApplicationController
     params.require(:film).permit(:title, :intro, :director, :document, :production_year, :production_country, :running_time, :cast, :genre, {images: []})
   end
 
+  # def search_params
+  #   params.require(:q).permit(:gearname_or_title_or_review_cont)
+  # end
+
   def get_id_film
     @film = Film.find(params[:id])
+  end
+
+  def set_search
+    @search = Film.ransack(params[:q])
+    # @film = @search.result
   end
 
 end
