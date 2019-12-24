@@ -1,27 +1,29 @@
-    <div>
-      <p>映画館の上映作品を求めている人と
-      作品のコンテンツホルダーが
-      ニーズを直接話し合えるアプリです。
+<div class="bg-image">
+  <div class="bg-mask">
+    <div id="preface">
+      <p>映画館の上映作品を求めている人と<br>作品のコンテンツホルダーが<br>ニーズを直接話し合えるアプリです。
       <br>
-      Filmlinkkは映画の裾野を広げる一助になりたいと考えています。</p>
+      Filmlinkkで映画の裾野を広げていきましょう！</p>
     </div>
 
-    <div>
+    <div class="sign_in_field">
       <% if client_signed_in? %>
-        <p><%= current_client.name %>さん</p>
-          <%= link_to "作品一覧へ", films_path %>
-          <%= link_to "logout", destroy_client_session_path, method: :delete %>
+        <p class="entrance"><%= current_client.name %>さん</p>
+          <p class="entrance_link"><%= link_to "作品一覧へ", films_path %>
+          <%= link_to "logout", destroy_client_session_path, method: :delete %></p>
       <% elsif right_holder_signed_in? %>
-        <p><%= current_right_holder.name %>さん</p>
-          <%= link_to "作品一覧へ", films_path %>
-          <%= link_to "logout", destroy_right_holder_session_path, method: :delete %>
+        <p class="entrance"><%= current_right_holder.name %>さん</p>
+          <p class="entrance_link"><%= link_to "作品一覧へ", films_path %>
+          <%= link_to "logout", destroy_right_holder_session_path, method: :delete %></p>
       <% else %>
-        <P>上映作品を探している方</P>
-        <%= link_to t('view.login'), new_client_session_path %>
-        <%= link_to t('view.signin'), new_client_registration_path %>
+        <p class="entrance">上映作品を探している方</p>
+        <p class="entrance_link"><%= link_to t('view.login'), new_client_session_path %>
+        <%= link_to t('view.signin'), new_client_registration_path %></>
 
-        <P>作品の上映権をお持ちの方</P>
-        <%= link_to t('view.login'), new_right_holder_session_path %>
+        <p class="entrance">作品の上映権をお持ちの方</p>
+        <p class="entrance_link"><%= link_to t('view.login'), new_right_holder_session_path %>
         <%= link_to t('view.signin'), new_right_holder_registration_path %>
-      <% end %>
+      <% end %></>
     </div>
+  </div>
+</div>
