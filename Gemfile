@@ -24,12 +24,12 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'devise-i18n'
 gem 'kaminari'
-gem 'faker'
 
 # gem 'country_select'
 
 group :development, :test do
 
+  gem 'faker'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'better_errors'
