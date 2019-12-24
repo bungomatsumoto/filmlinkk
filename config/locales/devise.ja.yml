@@ -1,4 +1,9 @@
 ja:
+  "Forgot your password?": "パスワードを忘れた方はこちら"
+  "Send me reset password instructions": "パスワード再発行"
+  "Resend confirmation instructions": "パスワード再発行"
+  "Didn't receive confirmation instructions?": "確認メールの再送信"
+  "Didn't receive unlock instructions?": "アカウント凍結解除メールの再送信"
   activerecord:
     errors:
       models:

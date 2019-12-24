@@ -23,6 +23,7 @@ gem 'mini_magick'
 
 gem 'ransack'
 gem 'devise-i18n'
+gem 'kaminari'
 
 # gem 'country_select'
 
@@ -32,7 +33,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-
   gem 'spring'
   gem 'spring-commands-rspec'
 

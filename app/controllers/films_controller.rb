@@ -6,7 +6,7 @@ class FilmsController < ApplicationController
   def index
     # if params[:q]
       @q = Film.ransack(params[:q])
-      @films = @q.result(distinct: true)
+      @films = @q.result(distinct: true).page(params[:page])
     # else
     #   @films = Film.all
     # end
