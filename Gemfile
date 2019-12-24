@@ -24,6 +24,7 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'devise-i18n'
 gem 'kaminari'
+gem 'faker'
 
 # gem 'country_select'
 
