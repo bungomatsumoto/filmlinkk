@@ -5,6 +5,7 @@ class RightHolder < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :email, length: { maximum: 50 }
+  validates :intro, length: { maximum: 500 }
 
   mount_uploader :icon, ImageUploader
 end

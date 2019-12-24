@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_23_034544) do
+ActiveRecord::Schema.define(version: 2019_12_24_025855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2019_12_23_034544) do
     t.text "intro"
     t.string "director"
     t.text "image"
-    t.text "document"
     t.integer "production_year"
     t.string "production_country"
     t.integer "running_time"
