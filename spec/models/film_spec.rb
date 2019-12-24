@@ -23,7 +23,6 @@ RSpec.describe Film, type: :model do
 
   it "titleがありintroが500以内でyearがintegerならバリデーションが通る" do
     # @right_holder = create(:right_holder)
-
     film = Film.new(
       title: '映画',
       intro: '失敗テスト',
