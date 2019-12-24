@@ -7,7 +7,8 @@
     country: "country#{index}",
     city: "都市#{index}",
     intro: "イントロダクション#{index}"*10,
-    icon: open("#{Rails.root}/db/fixtures/img0.png"))
+    icon: open("#{Rails.root}/db/fixtures/img0.png"),
+    confirmation_token: @token)
 end
 
 10.times do |index|
@@ -16,7 +17,8 @@ end
     email: "right_holder#{index}@gmail.com",
     password: "password#{index}",
     intro: "イントロダクション#{index}"*10,
-    icon: open("#{Rails.root}/db/fixtures/img0.png"))
+    icon: open("#{Rails.root}/db/fixtures/img0.png"),
+    confirmation_token: @token)
 end
 
 10.times do |index|
@@ -33,9 +35,9 @@ end
     intro: intro,
     director: director,
     image: open("#{Rails.root}/db/fixtures/img#{rand(1..6)}.jpg"),
-    production_year: "200+#{rand(10)}",
+    production_year: 2000+"#{rand(10)}".to_i,
     production_country: production_country,
-    running_time: "10+#{rand(10)}",
+    running_time: 100+"#{rand(10)}".to_i,
     cast: cast,
     genre: genre)
 end
