@@ -1,41 +1,52 @@
 20.times do |index|
-  Client.create(
+  Client.create!(
     name: "クライアント#{index}",
     email: "client#{index}@gmail.com",
     password: "password#{index}",
     screen_name: "screen#{index}",
     country: "country#{index}",
-    city: "city#{index}",
+    city: "都市#{index}",
     intro: "イントロダクション#{index}"*10,
-    icon: open("#{Rails.root}/db/fixtures/img3.jpg"))
+    icon: open("#{Rails.root}/db/fixtures/img0.png"))
 end
 
 10.times do |index|
-  right_holders = RightHolder.create(
+  right_holders = RightHolder.create!(
     name: "著作権者#{index}",
     email: "right_holder#{index}@gmail.com",
     password: "password#{index}",
     intro: "イントロダクション#{index}"*10,
-    icon: open("#{Rails.root}/db/fixtures/img3.jpg"))
+    icon: open("#{Rails.root}/db/fixtures/img0.png"))
 end
 
 10.times do |index|
-  title = Faker::Job.title
-  explanation = "Hogehoge"
+  title = Faker::Book.title
+  intro = Faker::ChuckNorris.fact
+  director = Faker::Artist.name
+  production_country = Faker::Address.country
+  cast = Faker::BossaNova.artist
+  genre = Faker::Book.genre
 
-  Film.create(
+  Film.create!(
     right_holder_id: RightHolder.find(index+1).id,
     title: title,
     intro: intro,
-    director: intro,
-    image: open("#{Rails.root}/db/fixtures/img3.jpg"),
-    production_year: intro,
-    production_country: intro,
-    running_time: intro,
-    cast: intro,
-    genre: intro)
+    director: director,
+    image: open("#{Rails.root}/db/fixtures/img#{rand(1..6)}.jpg"),
+    production_year: "200+#{rand(10)}",
+    production_country: production_country,
+    running_time: "10+#{rand(10)}",
+    cast: cast,
+    genre: genre)
 end
 
+Booking.create(client_id:1, film_id:3)
+Booking.create(client_id:1, film_id:7)
+Booking.create(client_id:3, film_id:7)
+Booking.create(client_id:3, film_id:8)
+Booking.create(client_id:3, film_id:10)
+Booking.create(client_id:10, film_id:1)
+Booking.create(client_id:18, film_id:9)
 
 
 # This file should contain all the record creation needed to seed the database with its default values.
