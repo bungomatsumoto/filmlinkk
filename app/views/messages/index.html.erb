@@ -19,7 +19,7 @@
 <% end %>
 
 <%= form_with(model: [@conversation, @message]) do |f| %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body %><br>
   <% if client_signed_in? %>
     <%= f.text_field :client_id, value: current_client.id, type: "hidden" %>
     <%= f.text_field :right_holder_id, value: @conversation.right_holder.id, type: "hidden" %>
@@ -27,7 +27,7 @@
     <%= f.text_field :client_id, value: @conversation.client.id, type: "hidden" %>
     <%= f.text_field :right_holder_id, value: current_right_holder.id, type: "hidden" %>
   <% end %>
-  <%= f.submit t('send_message') %>
+  <%= f.submit t('view.send_message') %>
 <% end %>
 
   <% if right_holder_signed_in? %>
