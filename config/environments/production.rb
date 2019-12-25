@@ -65,7 +65,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: https://ancient-tor-72127.herokuapp.com/ }
+  # config.action_mailer.default_url_options = { host: https://ancient-tor-72127.herokuapp.com/ }
   config.action_mailer.delivery_method = :letter_opener_web
 
   # Ignore bad email addresses and do not raise email delivery errors.
