@@ -7,7 +7,7 @@ else
     :port => '587',
     :domain => 'heroku.com',
     :authentication => :plain,
-    :user_name => ENV["SENDGRID_USER"],
-    :password => ENV["SENDGRID_PASS"]
+    :user_name => ENV["SENDGRID_USERNAME"],
+    :password => ENV["SENDGRID_PASSWORD"]
   }
 end

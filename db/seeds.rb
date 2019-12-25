@@ -1,14 +1,17 @@
 20.times do |index|
-  Client.create!(
-    name: "クライアント#{index}",
-    email: "client#{index}@gmail.com",
-    password: "password#{index}",
-    screen_name: "screen#{index}",
-    country: "country#{index}",
-    city: "都市#{index}",
-    intro: "イントロダクション#{index}"*10,
-    icon: open("#{Rails.root}/db/fixtures/img0.png"),
-    confirmation_token: @token)
+  begin
+    Client.create!(
+      name: "クライアント#{index}",
+      email: "client#{index}@gmail.com",
+      password: "password#{index}",
+      screen_name: "screen#{index}",
+      country: "country#{index}",
+      city: "都市#{index}",
+      intro: "イントロダクション#{index}"*10,
+      icon: open("#{Rails.root}/db/fixtures/img0.png"),
+      confirmation_token: @token)
+  rescue
+  end
 end
 
 10.times do |index|
