@@ -25,6 +25,7 @@ gem 'ransack'
 gem 'devise-i18n'
 gem 'kaminari'
 gem 'faker'
+gem 'dotenv-rails'
 
 # gem 'country_select'
 
