@@ -16,8 +16,7 @@ end
     email: "right_holder#{index}@gmail.com",
     password: "password#{index}",
     intro: "イントロダクション#{index}"*10,
-    icon: open("#{Rails.root}/db/fixtures/img0.png"),
-    confirmation_token: @token)
+    icon: open("#{Rails.root}/db/fixtures/img0.png"))
 end
 
 10.times do |index|
