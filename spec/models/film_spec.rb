@@ -30,12 +30,4 @@ RSpec.describe Film, type: :model do
     expect(film).to be_valid
   end
 
-  it "ransack使用時、該当titleが一つの場合に一つ表示" do
-    film1 = Film.create(id: 1, title: 'MMM')
-    film2 = Film.create(id: 2, title: 'GGG')
-    film3 = Film.create(id: 3, title: 'QQQ')
-    film4 = Film.create(id: 4, title: '55555')
-    expect(Film.ransack("GGG")).to include("GGG")
-  end
-
 end
