@@ -12,8 +12,8 @@
     </div>
     <div class="ransack_item">
     <%= f.label :production_year %>
-    <%= f.number_field :production_year_gteq %>年〜
-    <%= f.number_field :production_year_lteq %>年
+    <%= f.number_field :production_year_gteq, min: 1893.0, step: 1.0 %>年〜
+    <%= f.number_field :production_year_lteq, min: 1893.0, step: 1.0 %>年
     </div>
     <div class="ransack_item">
     <%= f.submit "検索" %>

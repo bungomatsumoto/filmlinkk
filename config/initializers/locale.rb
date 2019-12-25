@@ -15,3 +15,5 @@ Faker::Artist.name
 Faker::Address.country
 Faker::BossaNova.artist
 Faker::Book.genre
+
+

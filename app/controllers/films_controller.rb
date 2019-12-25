@@ -27,7 +27,7 @@ class FilmsController < ApplicationController
   end
 
   def show
-    @booking = current_client.bookings.find_by(film_id: @film.id)
+    # @booking = current_client.bookings.find_by(film_id: @film.id)
   end
 
   def edit

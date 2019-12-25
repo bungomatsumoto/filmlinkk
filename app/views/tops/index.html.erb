@@ -17,11 +17,11 @@
           <%= link_to "logout", destroy_right_holder_session_path, method: :delete %></p>
       <% else %>
         <p class="entrance">上映作品を探している方</p>
-        <p class="entrance_link"><%= link_to t('view.login'), new_client_session_path %>
+        <p id="client_entrance" class="entrance_link"><%= link_to t('view.login'), new_client_session_path %>
         <%= link_to t('view.signin'), new_client_registration_path %></>
 
         <p class="entrance">作品の上映権をお持ちの方</p>
-        <p class="entrance_link"><%= link_to t('view.login'), new_right_holder_session_path %>
+        <p id="right_holder_entrance" class="entrance_link"><%= link_to t('view.login'), new_right_holder_session_path %>
         <%= link_to t('view.signin'), new_right_holder_registration_path %>
       <% end %></>
     </div>
