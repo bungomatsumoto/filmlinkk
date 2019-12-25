@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_064144) do
+ActiveRecord::Schema.define(version: 2019_12_24_124949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,6 @@ ActiveRecord::Schema.define(version: 2019_12_18_064144) do
     t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.index ["confirmation_token"], name: "index_clients_on_confirmation_token", unique: true
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
@@ -61,8 +56,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_064144) do
     t.string "title", default: "", null: false
     t.text "intro"
     t.string "director"
-    t.json "images"
-    t.text "document"
+    t.text "image"
     t.integer "production_year"
     t.string "production_country"
     t.integer "running_time"
@@ -97,11 +91,6 @@ ActiveRecord::Schema.define(version: 2019_12_18_064144) do
     t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.index ["confirmation_token"], name: "index_right_holders_on_confirmation_token", unique: true
     t.index ["email"], name: "index_right_holders_on_email", unique: true
     t.index ["reset_password_token"], name: "index_right_holders_on_reset_password_token", unique: true
   end

@@ -4,7 +4,7 @@ class CreateFilms < ActiveRecord::Migration[5.2]
       t.string :title, default: "", null: false
       t.text :film_intro
       t.string :director
-      t.json :images
+      t.text :image
       t.text :document
       t.integer :production_year
       t.string :production_country

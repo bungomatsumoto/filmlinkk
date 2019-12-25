@@ -8,10 +8,12 @@ class MessagesController < ApplicationController
   def index
     @messages = @conversation.messages.order(:created_at)
     @message = @conversation.messages.build
+    # @conversation
   end
 
   def create
     @message = @conversation.messages.build(message_params)
+    # binding.pry
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     else
@@ -26,6 +28,6 @@ class MessagesController < ApplicationController
   end
 
   def authenticate_filmlinkk!
-    authenticate_client! || authenticate_right_holder!
+    current_client.nil? ? authenticate_right_holder! : authenticate_client!
   end
 end

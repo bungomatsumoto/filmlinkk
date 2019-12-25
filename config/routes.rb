@@ -19,13 +19,11 @@ Rails.application.routes.draw do
   resources :right_holders, only: [:show]
 
   resources :films
-  resources :bookings, only: [:create, :destroy]
+  resources :bookings, only: [:create, :destroy, :index]
 
   resources :conversations do
     resources :messages
   end
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+    # mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end

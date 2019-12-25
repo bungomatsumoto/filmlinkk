@@ -1,24 +1,41 @@
 <% if client_signed_in? %>
-  <%= @right_holder.name %>とのチャットルーム
+  <%= current_client.name%>と<%= @conversation.right_holder.name %>のチャットルーム
   <% @messages.each do |m| %>
     <% if m.body.present? %>
-      <%= m.client.name %> <%= m.message_time %>
-      <%= m.body %>
+      <p><%= m.client.name %> <%= m.message_time %><br>
+      <%= m.body %></p>
     <% end %>
   <% end %>
 
 <% elsif right_holder_signed_in? %>
-  <%= @client.name %>とのチャットルーム
+  <%= current_right_holder.name%>と<%= @conversation.client.name %>のチャットルーム
   <% @messages.each do |m| %>
     <% if m.body.present? %>
-      <%= m.right_holder.name %> <%= m.message_time %>
-      <%= m.body %>
+      <p><%= m.right_holder.name %> <%= m.message_time %><br>
+      <%= m.body %></p>
     <% end %>
   <% end %>
 
 <% end %>
 
 <%= form_with(model: [@conversation, @message]) do |f| %>
-  <%= f.text_area :body %>
-  <%= f.submit "メッセージを送る"%>
+  <%= f.text_area :body %><br>
+  <% if client_signed_in? %>
+    <%= f.text_field :client_id, value: current_client.id, type: "hidden" %>
+    <%= f.text_field :right_holder_id, value: @conversation.right_holder.id, type: "hidden" %>
+  <% elsif right_holder_signed_in? %>
+    <%= f.text_field :client_id, value: @conversation.client.id, type: "hidden" %>
+    <%= f.text_field :right_holder_id, value: current_right_holder.id, type: "hidden" %>
+  <% end %>
+  <%= f.submit t('view.send_message') %>
 <% end %>
+
+  <% if right_holder_signed_in? %>
+    <%= link_to "#{@conversation.client.name}"+t('view.profile'), client_path(@conversation.client.id) %>
+    <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
+  <% elsif client_signed_in? %>
+    <%= link_to "#{@conversation.right_holder.name}"+t('view.profile'), right_holder_path(@conversation.right_holder.id) %>
+    <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
+  <% end %>
+
+<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>

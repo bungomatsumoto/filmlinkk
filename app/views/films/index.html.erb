@@ -1,57 +1,74 @@
 <h3><%= t('activerecord.models.film')+t('view.index') %></h3>
 
-<p>作品名をクリックすると詳細が見られます。詳細画面からは上映権を持つ人にメッセージを送ることができます！<br>作品名、監督名などのキーワードや、製作年で検索ができます</p>
+<p class="commentary">
+リストの作品名をクリックして詳細をご確認ください。詳細画面から上映権を持つ人にメッセージを送ることができます。どんどん交流しましょう！<br>ここでは作品名や監督名などのキーワード、製作年で検索ができ、製作国やジャンルで絞り込みもできます
+</p>
 
-<%# 検索フィールド %>
+<div id="ransack_form">
+  <%= search_form_for @q do |f| %>
+    <div class="ransack_item">
+    <%= f.label :title_or_intro_or_director_or_cast_cont, "キーワード" %>
+    <%= f.search_field :title_or_intro_or_director_or_cast_cont %>
+    </div>
+    <div class="ransack_item">
+    <%= f.label :production_year %>
+    <%= f.number_field :production_year_gteq %>年〜
+    <%= f.number_field :production_year_lteq %>年
+    </div>
+    <div class="ransack_item">
+    <%= f.submit "検索" %>
+    </div>
+  <% end %>
+</div>
 
- <div class="film_index">
-    <table class="sticky_table">
-      <thead>
-      <% @films.each do |film| %>
+<div class="film_index">
+  <table class="sticky_table">
+    <thead>
+      <tr>
+        <th class="blank"><%= t('activerecord.attributes.film.title') %></th>
+        <th class="table_header"><%= t('activerecord.attributes.film.director') %></th>
+        <th class="table_header"><%= t('activerecord.attributes.film.production_year') %></th>
+        <th class="table_header"><%= sort_link(@q, :production_country, t('activerecord.attributes.film.production_country')) %></th>
+        <th class="table_header"><%= sort_link(@q, :genre, t('activerecord.attributes.film.genre')) %></th>
+        <th class="table_header"><%= t('activerecord.attributes.film.image') %></th>
+        <th class="table_header"><%= t('activerecord.attributes.film.intro') %></th>
+        <th class="table_header"><%= t('activerecord.attributes.film.cast') %></th>
+        <% if right_holder_signed_in? %>
+          <%# # <% if current_right_holder.id == film.right_holder.id %>
+            <th class="option_order">&nbsp;</th>
+          <%# # <% end %>
+        <% end %>
+      </tr>
+    </thead>
 
-        <tr>
-          <th class="blank"><%= t('activerecord.attributes.film.title') %></th>
-          <th class="table_header"><%= t('activerecord.attributes.film.director') %></th>
-          <th class="table_header"><%= t('activerecord.attributes.film.production_year') %></th>
-          <th class="table_header"><%= t('activerecord.attributes.film.production_country') %></th>
-          <th class="table_header"><%= t('activerecord.attributes.film.images') %></th>
-          <th class="table_header"><%= t('activerecord.attributes.film.intro') %></th>
-          <th class="option_order"><%= t('activerecord.attributes.film.cast') %></th>
-          <th class="option_order"><%= t('activerecord.attributes.film.genre') %></th>
-          <% if right_holder_signed_in? %>
-            <%# # <% if current_right_holder.id == film.right_holder.id %>
-              <th class="option_order">&nbsp;</th>
-            <%# # <% end %>
+    <tbody>
+    <% @films.each do |film| %>
+      <tr>
+        <th id="film_title" class="film_data"><%= link_to film.title, film_path(film.id) %></th>
+        <td class="film_data"><%= film.director %></td>
+        <td class="film_data"><%= film.production_year %></td>
+        <td class="film_data"><%= film.production_country %></td>
+        <td class="film_data"><%= film.genre %></td>
+        <td class="film_data">
+          <%= image_tag(film.image.thumb.url) if film.image.present? %>
+        </td>
+        <td class="film_data"><%= film.intro %></td>
+        <td class="film_data"><%= film.cast %></td>
+        <% if right_holder_signed_in? %>
+          <% if current_right_holder.id == film.right_holder.id %>
+            <td class="option_order">
+            <%= link_to t('view.destroy'), film_path(film.id), method: :delete, data: { confirm: t('view.destroy_confirm')} %>
+            </td>
           <% end %>
-        </tr>
-      </thead>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-      <tbody>
-        <tr>
-          <td id="film_title" class="film_data"><%= link_to film.title, film_path(film.id) %></td>
-          <td class="film_data"><%= film.director %></td>
-          <td class="film_data"><%= film.production_year %></td>
-          <td class="film_data"><%= film.production_country %></td>
-          <td class="film_data">
-            <% film.images.each do |image| %>
-            <%= image_tag(image.url(:thumb)) %>
-            <% end %>
-          </td>
-          <td class="film_data"><%= film.intro %></td>
-          <td class="film_data"><%= film.cast %></td>
-          <td class="film_data"><%= film.genre %></td>
-          <% if right_holder_signed_in? %>
-            <% if current_right_holder.id == film.right_holder.id %>
-              <td class="option_order">
-              <%= link_to t('view.destroy'), film_path(film.id), method: :delete, data: { confirm: t('view.destroy_confirm')} %>
-              </td>
-            <% end %>
-          <% end %>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+  <%= paginate @films %>
+
+</div>
 
   <% if client_signed_in? %>
     <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
@@ -61,3 +78,4 @@
     <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
   <% end %>
   <%= link_to t('activerecord.models.client')+t('view.index'), clients_path %>
+  <%= link_to t('activerecord.models.film')+t('view.index'), films_path %>
