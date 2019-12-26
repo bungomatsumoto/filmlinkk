@@ -36,16 +36,24 @@
   <P><%= t('activerecord.attributes.film.genre') %>:<br><%= @film.genre %></p>
 </div>
 
+<div>
+  <P>現在この映画の上映権を持っている人:</p>
+  <% @film.bookings.each do |booking| %>
+    <span><%= link_to booking.client.name, client_path(client_id: booking.client.id) %></span>
+  <% end %>
+</div>
+
 
 <% if client_signed_in? %>
   <div class="client_item">
     <p class="client_item_label"></p>
     <% if @booking.present? %>
-      <%= link_to '上映権終了を申告する', booking_path(id: @booking.id), method: :delete %>
+      <%= link_to '上映権終了を申告する', booking_path(id: @booking.id), method: :delete, class: "booking_link" %>
     <% else %>
-      <%= link_to '上映できることを明らかにします', bookings_path(film_id: @film.id), method: :post %>
+      <%= link_to '上映できることを明らかにします', bookings_path(film_id: @film.id), method: :post, class: "booking_link" %>
     <% end %>
-    <p class="client_item_detail"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path(client_id: current_client.id, right_holder_id: @film.right_holder.id), method: :post %></p>
+
+    <p class="client_item_detail"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path(client_id: current_client.id, right_holder_id: @film.right_holder_id), method: :post, class: "send_message" %></p>
     <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
   </div>
 <% elsif right_holder_signed_in? %>
@@ -55,4 +63,5 @@
   <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
 <% end %>
 
+<%= link_to t('view.profile'), right_holder_path(right_holder_id: @film.right_holder_id) %>
 <%= link_to t('activerecord.models.film')+t('view.index'), films_path %>

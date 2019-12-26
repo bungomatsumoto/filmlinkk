@@ -9,21 +9,30 @@
     <div class="sign_in_field">
       <% if client_signed_in? %>
         <p class="entrance"><%= current_client.name %>さん</p>
-          <p class="entrance_link"><%= link_to "作品一覧へ", films_path %>
-          <%= link_to "logout", destroy_client_session_path, method: :delete %></p>
+          <p class="entrance_link">
+            <span><%= link_to "作品一覧へ", films_path, id: "films_index" %></span>
+            <span><%= link_to "logout", destroy_client_session_path, method: :delete, id: "client_logout" %></span>
+          </p>
       <% elsif right_holder_signed_in? %>
         <p class="entrance"><%= current_right_holder.name %>さん</p>
-          <p class="entrance_link"><%= link_to "作品一覧へ", films_path %>
-          <%= link_to "logout", destroy_right_holder_session_path, method: :delete %></p>
+          <p class="entrance_link">
+            <span><%= link_to "作品一覧へ", films_path, id: "films_index" %></span>
+            <span><%= link_to "logout", destroy_right_holder_session_path, method: :delete,  id: "right_holder_logout" %></span>
+          </p>
+
       <% else %>
         <p class="entrance">上映作品を探している方</p>
-        <p id="client_entrance" class="entrance_link"><%= link_to t('view.login'), new_client_session_path %>
-        <%= link_to t('view.signin'), new_client_registration_path %></>
+        <p class="entrance_link">
+          <span><%= link_to t('view.login'), new_client_session_path, id: "client_login" %></span>
+          <span><%= link_to t('view.signin'), new_client_registration_path, id: "client_signin" %></span>
+        </p>
 
         <p class="entrance">作品の上映権をお持ちの方</p>
-        <p id="right_holder_entrance" class="entrance_link"><%= link_to t('view.login'), new_right_holder_session_path %>
-        <%= link_to t('view.signin'), new_right_holder_registration_path %>
-      <% end %></>
+        <p class="entrance_link">
+          <span><%= link_to t('view.login'), new_right_holder_session_path,  id: "right_holder_login" %></span>
+          <span><%= link_to t('view.signin'), new_right_holder_registration_path, id: "right_holder_signin" %></span>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>

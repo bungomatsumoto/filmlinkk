@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-
   root 'tops#index'
 
   devise_for :right_holders, path: 'right_holders', controllers: {
@@ -26,5 +24,5 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

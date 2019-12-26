@@ -11,30 +11,31 @@
   </head>
 
   <body>
-
     <div class="wrapper">
       <header class="header_container">
-        <h2 id="header_title"><%= link_to "Filmlinkk", root_path %></h2>
-        <p>映画上映をもっと手軽に</p>
-        <div class="bg"></div>
+        <div class="header_field">
+          <h2 id="header_title" style="color: #fff"><%= link_to "Filmlinkk", root_path %></h2>
+          <p>映画上映をもっと手軽に</p>
+        </div>
       </header>
 
 
-    <div class="main_container">
-      <% if notice %>
-        <p class="alert alert-notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-error"><%= alert %></p>
-      <% end %>
-      <%= yield %>
-    </div>
+      <div class="main_container">
+        <% if notice %>
+          <p class="alert alert-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </div>
 
       <footer class="footer">
         <div id="foot_wrap">
           <p><small>(C)2019 Filmlinkk. All Rights Reserved.</small></p>
         </div>
       </footer>
+
     </div>
   </body>
 </html>

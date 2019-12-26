@@ -14,41 +14,56 @@
  *= require_tree .
  */
  body {
+  margin: 0;
   color: #333;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
 }
 
+p {
+  margin-top:0 ;
+  margin-bottom: 0;
+}
+.wrapper {
+  max-width: 600px;
+}
+
 .header_container {
-  height: 40px;
+  height: 70px;
   width: 100%;
   background-color: #556b2f;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
   font-size: 1rem;
   /* position: relative; */
 }
 
-.main_container {
+.header_field {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+.header_field p {
+  padding-top: 10px;
+}
+
+#header_title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding-top: 10px;
+}
+/* h2 a:link {
+  color: #fff;
+} */
+.main_container, #foot_wrap {
   width: 100%;
+  /* margin: 1.2rem; */
   /* padding-top: 10px;
   padding-bottom: 10px; */
 }
-/* .bg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url(https:);
-  background-size: cover;
-  opacity: 0.4;
-} */
 
-.wrapper {
-  max-width: 600px;
-}
 
 .alert alert-notice {
   margin-top: 8px;
@@ -69,22 +84,16 @@ a:hover {
 a:link, a:visited {
   color: #333;
 }
-
-#header_title {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  margin: 0;
-  padding-top: 10px;
-}
-h2 a:link {
-  color: #fff;
-}
+/* .bg-image {
+  background-image: url("/images/tops_image.jpg"); */
+  /* width: 100%; */
+  /* height: 600px;
+  background-size: cover;
+} */
 
 .footer {
   background-color: #2f376b;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 #foot_wrap {

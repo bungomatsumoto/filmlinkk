@@ -27,7 +27,7 @@ class FilmsController < ApplicationController
   end
 
   def show
-    # @booking = current_client.bookings.find_by(film_id: @film.id)
+  #   @booking = current_client.booking_films.find_by(film_id: @film.id) if client_signed_in? || right_holder_signed_in?
   end
 
   def edit
