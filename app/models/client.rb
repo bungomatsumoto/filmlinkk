@@ -13,4 +13,5 @@ class Client < ApplicationRecord
   validates :intro, length: { maximum: 500 }
 
   mount_uploader :icon, ImageUploader
+  paginates_per 20
 end

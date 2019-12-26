@@ -144,6 +144,7 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+      search: 検索
   number:
     currency:
       format:
@@ -213,6 +214,7 @@ ja:
     update: 更新
     destroy: 削除
     back: 戻る
+    keyword: キーワード
     signup: ユーザー登録
     logout: ログアウト
     login: ログイン

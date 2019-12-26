@@ -7,7 +7,7 @@
 <div id="ransack_form">
   <%= search_form_for @q do |f| %>
     <div class="ransack_item">
-    <%= f.label :title_or_intro_or_director_or_cast_cont, "キーワード" %>
+    <%= f.label :title_or_intro_or_director_or_cast_cont, t('view.keyword') %>
     <%= f.search_field :title_or_intro_or_director_or_cast_cont %>
     </div>
     <div class="ransack_item">
@@ -16,7 +16,7 @@
     <%= f.number_field :production_year_lteq, min: 1893.0, step: 1.0 %>年
     </div>
     <div class="ransack_item">
-    <%= f.submit "検索" %>
+    <%= f.submit t('helpers.submit.search') %>
     </div>
   <% end %>
 </div>

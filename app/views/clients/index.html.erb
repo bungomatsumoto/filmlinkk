@@ -1,5 +1,17 @@
 <h3><%= t('activerecord.models.client')+t('view.index') %></h3>
 
+<div id="ransack_form">
+  <%= search_form_for @q do |f| %>
+    <div class="ransack_item">
+    <%= f.label :name_or_screen_name_or_country_or_intro_cont, t('view.keyword') %>
+    <%= f.search_field :name_or_screen_name_or_country_or_intro_cont %>
+    </div>
+    <div class="ransack_item">
+    <%= f.submit t('helpers.submit.search') %>
+    </div>
+  <% end %>
+</div>
+
 <div class="client_index">
   <table class="">
     <tr>
@@ -18,6 +30,7 @@
 
     <% end %>
   </table>
+  <%= paginate @clients %>
 </div>
 
 <% if client_signed_in? %>
