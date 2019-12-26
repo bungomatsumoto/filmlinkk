@@ -45,13 +45,13 @@ end
     genre: genre)
 end
 
-Booking.create(client_id:1, film_id:3)
-Booking.create(client_id:1, film_id:7)
-Booking.create(client_id:3, film_id:7)
-Booking.create(client_id:3, film_id:8)
-Booking.create(client_id:3, film_id:10)
-Booking.create(client_id:10, film_id:1)
-Booking.create(client_id:18, film_id:9)
+Booking.create(client_id: 1, film_id: 3)
+Booking.create(client_id: 1, film_id: 7)
+Booking.create(client_id: 3, film_id: 7)
+Booking.create(client_id: 3, film_id: 8)
+Booking.create(client_id: 3, film_id: 10)
+Booking.create(client_id: 10, film_id: 1)
+Booking.create(client_id: 18, film_id: 9)
 
 
 # This file should contain all the record creation needed to seed the database with its default values.
