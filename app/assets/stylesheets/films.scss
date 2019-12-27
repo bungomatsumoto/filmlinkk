@@ -5,6 +5,13 @@
 // .film_index {
 //   max-width: 700px;
 // }
+
+#films_all {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .commentary {
   font-size: 0.9rem;
   padding-bottom: 15px;
@@ -20,8 +27,13 @@
   padding-bottom: 8px;
 }
 
-.film_index {
+#films_index {
   font-size: 0.9rem;
+}
+table {
+  width:90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sticky_table {
@@ -30,10 +42,11 @@
   overflow: scroll;
   width: calc(100vw - 3.0rem);
   /* width: 100%; */
-  height: calc(60vh);
+  height: calc(70vh);
   border-collapse: collapse;
   border: solid 1px #9C9C9C;
   font-size: 0;
+  margin-bottom: 30px;
 }
 /* /* */
 .sticky_table thead,
@@ -42,6 +55,8 @@
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  border-collapse: collapse;
+  border: solid 1px #9C9C9C;
 }
 
 .sticky_table th,
@@ -49,7 +64,7 @@
   display: inline-block;
   width: 8.0rem;
   background: #fff;
-  font-size: 1.0rem;
+  font-size: 0.9rem;
 }
 
 .sticky_table tbody th {
@@ -72,4 +87,32 @@
   top: 0;
   left: 0;
   z-index: 3;
+}
+
+#film_show {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.film_item {
+  padding-bottom: 30px;
+}
+.film_item {
+  font-size: 0.9rem;
+}
+.item_detail {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.booking_or_release {
+  color: #ff4500;
+  width: 300px;
+  text-align: left;
+  // border-radius: 0.98rem;
+  // text-align: center;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding-bottom: 20px;
 }

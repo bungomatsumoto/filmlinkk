@@ -1,3 +1,19 @@
 // Place all the styles related to the bookings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#booking_index {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.booking_film_list {
+  padding-bottom: 30px;
+}
+.item_label {
+  font-size: 0.9rem;
+}
+.item_detail {
+  font-size: 1rem;
+  font-weight: bold;
+}

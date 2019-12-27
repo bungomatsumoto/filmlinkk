@@ -1,13 +1,21 @@
-<h3><%= @client.name %>さんが上映できる映画一覧</h3>
+<div id="booking_index">
+  <h3><%= @client.name %>さんが上映できる映画一覧</h3>
 
-<% @bookings.each do |booking| %>
-  <div>
-    <p class=""><%= t('view.title') %>: <%= link_to booking.film.title, film_path(booking.film.id) %></p>
-    <p class=""><%= t('view.director') %>: <%= booking.film.director %></p>
-    <p><%= image_tag(booking.film.image.url) if booking.film.image.present? %></p>
+  <% @bookings.each do |booking| %>
+    <div class="booking_film_list">
+      <p><%= image_tag(booking.film.image.url) if booking.film.image.present? %></p>
+      <p class="item_label"><%= t('view.title') %>:
+      </p>
+        <p class="item_detail"><%= link_to booking.film.title, film_path(booking.film.id) %></p>
+      <p class="item_label"><%= t('view.director') %>:
+      </p>
+        <p class="item_detail"><%= booking.film.director %></p>
+    </div>
+  <% end %>
+
+  <div class="link_area">
+    <p><span class="to_other_page"><%= link_to t('view.back'), client_path(@client) %></span>
+    <span class="to_other_page"><%= link_to t('activerecord.models.client')+t('view.index'), clients_path %></span>
+    <span class="to_other_page"><%= link_to t('activerecord.models.film')+t('view.index'), films_path %></span></p>
   </div>
-<% end %>
-
-<%= link_to t('view.back'), client_path(@client) %>
-<%= link_to t('activerecord.models.client')+t('view.index'), clients_path %>
-<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>
+</div>

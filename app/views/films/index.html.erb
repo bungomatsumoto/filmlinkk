@@ -1,10 +1,14 @@
-<h3><%= t('activerecord.models.film')+t('view.index') %></h3>
+<div id="films_all">
+  <h3><%= t('activerecord.models.film')+t('view.index') %></h3>
 
-<p class="commentary">
-リストの作品名をクリックして詳細をご確認ください。詳細画面から上映権を持つ人にメッセージを送ることができます。どんどん交流しましょう！<br>ここでは作品名や監督名などのキーワード、製作年で検索ができ、製作国やジャンルで絞り込みもできます
-</p>
+  <p class="commentary">
+  リストの作品名をクリックして詳細をご確認ください。<br>
+  詳細画面から上映権を持つ人にメッセージを送ることができます。<br>
+  どんどん交流しましょう！<br>
+  ここでは作品名や監督名などのキーワード、製作年で検索ができ、製作国やジャンルでソートもできます
+  </p>
 
-<div id="ransack_form">
+  <div id="ransack_form">
   <%= search_form_for @q do |f| %>
     <div class="ransack_item">
     <%= f.label :title_or_intro_or_director_or_cast_cont, t('view.keyword') %>
@@ -19,9 +23,9 @@
     <%= f.submit t('helpers.submit.search') %>
     </div>
   <% end %>
-</div>
+  </div>
 
-<div class="film_index">
+  <div id="films_index">
   <table class="sticky_table">
     <thead>
       <tr>
@@ -68,14 +72,29 @@
 
   <%= paginate @films %>
 
-</div>
+  </div>
 
+  <p class="link_area">
   <% if client_signed_in? %>
+    <span class="to_other_page">
     <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
+    </span>
   <% elsif right_holder_signed_in? %>
+    <span class="to_other_page">
     <%= link_to t('view.registrate_film'), new_film_path, class: "film_create" %>
+    </span>
+    <span class="to_other_page">
     <%= link_to t('view.profile'), right_holder_path(current_right_holder.id) %>
+    </span>
+    <span class="to_other_page">
     <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
+    </span>
   <% end %>
+  <span class="to_other_page">
   <%= link_to t('activerecord.models.client')+t('view.index'), clients_path, class: "client_index" %>
+  </span>
+  <span class="to_other_page">
   <%= link_to t('activerecord.models.film')+t('view.index'), films_path, class: "film_index" %>
+  </span>
+  </p>
+</div>

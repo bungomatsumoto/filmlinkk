@@ -1,53 +1,55 @@
-<h3><%= t('activerecord.models.client')+t('view.show') %></h3>
+<div id="client_show">
+  <h3><%= t('activerecord.models.client')+t('view.show') %></h3>
 
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= @client.name %></p>
+    <div class="client_item">
+      <p class="item_label"><%= t('activerecord.attributes.client.name') %>:</p>
+      <p class="item_detail"><%= @client.name %></p>
+    </div>
+
+    <div class="client_item">
+      <p class="item_label"></p>
+      <p class="item_detail"><%= image_tag(@client.icon.url) if @client.icon.present? %></p>
+    </div>
+
+    <div class="client_item">
+      <p class="item_label"><%= t('activerecord.attributes.client.screen_name') %>:</p>
+      <p class="item_detail"><%= @client.screen_name %></p>
+    </div>
+
+    <div class="client_item">
+      <p class="item_label"><%= t('activerecord.attributes.client.email') %>:</p>
+      <p class="item_detail"><%= @client.email %></p>
+    </div>
+
+    <div class="client_item">
+      <p class="item_label"><%= t('activerecord.attributes.client.country') %>:</p>
+      <p class="item_detail"><%= @client.country %></p>
+    </div>
+
+    <div class="client_item">
+      <p class="item_label"><%= t('activerecord.attributes.client.city') %>:</p>
+      <p class="item_detail"><%= @client.city %></p>
+    </div>
+
+    <div class="client_item">
+      <p class="item_label"><%= t('activerecord.attributes.client.intro') %>:</p>
+      <p class="item_detail"><%= @client.intro %></p>
+    </div>
+
+    <div class="link_area">
+    <% if right_holder_signed_in? %>
+      <p><span class="to_other_page"><%= link_to t('view.this_client')+t('view.send_message'), conversations_path(right_holder_id: current_right_holder.id, client_id: @client.id), method: :post %></span>
+      <span class="to_other_page"><%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %></span></p>
+    </div>
+    <% end %>
+
+    <% if @client == current_client %>
+      <p><span class="to_other_page"><%= link_to t('view.this_page')+t('view.edit'), edit_client_registration_path(@client) %></span>
+      <span class="to_other_page"><%= link_to t('view.logout'), destroy_client_session_path, method: :delete %></span></p>
+    <% end %>
+
+    <p class="booking_film"><%= link_to "#{@client.name}さんが上映できる映画一覧", bookings_path %></p>
+    <p><span class="to_other_page"><%= link_to t('activerecord.models.client')+t('view.index'), clients_path %></span>
+    <span class="to_other_page"><%= link_to t('activerecord.models.film')+t('view.index'), films_path %></span></p>
   </div>
-
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= @client.screen_name %></p>
-  </div>
-
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= @client.email %></p>
-  </div>
-
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= @client.country %></p>
-  </div>
-
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= @client.city %></p>
-  </div>
-
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= @client.intro %></p>
-  </div>
-
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= image_tag(@client.icon.url) if @client.icon.present? %></p>
-  </div>
-
-  <% if right_holder_signed_in? %>
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <p class="client_item_detail"><%= link_to t('view.this_client')+t('view.send_message'), conversations_path(right_holder_id: current_right_holder.id, client_id: @client.id), method: :post %></p>
-    <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
-  </div>
-  <% end %>
-
-  <% if @client == current_client %>
-    <%= link_to t('view.this_page')+t('view.edit'), edit_client_registration_path(@client) %>
-    <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
-  <% end %>
-
-<%= link_to "#{@client.name}さんが上映できる映画一覧", bookings_path %>
-<%= link_to t('activerecord.models.client')+t('view.index'), clients_path %>
-<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>
+</div>

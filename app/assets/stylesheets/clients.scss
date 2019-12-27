@@ -1,6 +1,26 @@
 // Place all the styles related to the Clients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#client_show {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.client_item {
+  padding-bottom: 30px;
+}
+.item_label {
+  font-size: 0.9rem;
+}
+.item_detail {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.booking_film {
+  padding-bottom: 15px;
+}
 .clients_right_holders {
   text-align: center;
 }

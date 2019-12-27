@@ -1,28 +1,33 @@
-<h3><%= t('activerecord.models.right_holder')+t('view.show') %></h3>
+<div id="right_holder_show">
+  <h3><%= t('activerecord.models.right_holder')+t('view.show') %></h3>
 
-  <div class="right_holder_item">
-    <p class="right_holder_item_label"></p>
-    <p class="right_holder_item_detail"><%= @right_holder.name %></p>
-  </div>
+    <div class="right_holder_item">
+      <p class="item_label"><%= t('activerecord.attributes.right_holder.name') %>:</p>
+      <p class="item_detail"><%= @right_holder.name %></p>
+    </div>
 
-  <div class="right_holder_item">
-    <p class="right_holder_item_label"></p>
-    <p class="right_holder_item_detail"><%= @right_holder.email %></p>
-  </div>
+    <div class="right_holder_item">
+      <p class="item_label"></p>
+      <p class="item_detail"><%= image_tag(@right_holder.icon.url) if @right_holder.icon.present? %></p>
+    </div>
 
-  <div class="right_holder_item">
-    <p class="right_holder_item_label"></p>
-    <p class="right_holder_item_detail"><%= @right_holder.intro %></p>
-  </div>
+    <div class="right_holder_item">
+      <p class="item_label"><%= t('activerecord.attributes.right_holder.intro') %>:</p>
+      <p class="item_detail"><%= @right_holder.intro %></p>
+    </div>
 
-  <div class="right_holder_item">
-    <p class="right_holder_item_label"></p>
-    <p class="right_holder_item_detail"><%= image_tag(@right_holder.icon.url) if @right_holder.icon.present? %></p>
-  </div>
+    <div class="right_holder_item">
+      <p class="item_label"><%= t('activerecord.attributes.right_holder.email') %>:</p>
+      <p class="item_detail"><%= @right_holder.email %></p>
+    </div>
 
-  <% if @right_holder == current_right_holder %>
-    <%= link_to t('view.this_page')+t('view.edit'), edit_right_holder_registration_path(@right_holder) %>
-    <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
-  <% end %>
-<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>
-<%= link_to t('activerecord.models.client')+t('view.index'), clients_path %>
+    <div class="link_area">
+      <% if @right_holder == current_right_holder %>
+        <p><span class="to_other_page"><%= link_to t('view.this_page')+t('view.edit'), edit_right_holder_registration_path(@right_holder) %></span>
+        <span class="to_other_page"><%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %></span></p>
+      <% end %>
+
+      <p><span class="to_other_page"><%= link_to t('activerecord.models.film')+t('view.index'), films_path %></span>
+      <span class="to_other_page"><%= link_to t('activerecord.models.client')+t('view.index'), clients_path %></span></p>
+    </div>
+</div>

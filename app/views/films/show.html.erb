@@ -1,67 +1,76 @@
-<h3><%= t('activerecord.models.film')+t('view.show') %></h3>
+<div id="film_show">
+  <h3><%= t('activerecord.models.film')+t('view.show') %></h3>
 
-<div>
-  <P><%= t('activerecord.attributes.film.title') %>:<br><%= @film.title %></p>
-</div>
+    <div class="film_item">
+      <p class="item_detail"><%= image_tag(@film.image.url) if @film.image.present? %>
+    </div>
 
-<div>
-  <P><%= t('activerecord.attributes.film.director') %>:<br><%= @film.director %></p>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.title') %>:<br></p>
+      <p class="item_detail"><%= @film.title %></p>
+    </div>
 
-<div>
-  <P><%= t('activerecord.attributes.film.production_year') %>:<br><%= @film.production_year %></p>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.intro') %>:<br></p>
+      <p class="item_detail"><%= @film.intro %></p>
+    </div>
 
-<div>
-  <P><%= t('activerecord.attributes.film.production_country') %>:<br><%= @film.production_country %></p>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.production_year') %>:<br></p>
+      <p class="item_detail"><%= @film.production_year %></p>
+    </div>
 
-<div>
-  <P><%= t('activerecord.attributes.film.running_time') %>:<br><%= @film.running_time %></p>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.production_country') %>:<br></p>
+      <p class="item_detail"><%= @film.production_country %></p>
+    </div>
 
-<div>
-  <%= image_tag(@film.image.url) if @film.image.present? %>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.running_time') %>:<br></p>
+      <p class="item_detail"><%= @film.running_time %>min</p>
+    </div>
 
-<div>
-  <P><%= t('activerecord.attributes.film.intro') %>:<br><%= @film.intro %></p>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.director') %>:<br></p>
+      <p class="item_detail"><%= @film.director %></p>
+    </div>
 
-<div>
-  <P><%= t('activerecord.attributes.film.cast') %>:<br><%= @film.cast %></p>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.cast') %>:<br></p>
+      <p class="item_detail"><%= @film.cast %></p>
+    </div>
 
-<div>
-  <P><%= t('activerecord.attributes.film.genre') %>:<br><%= @film.genre %></p>
-</div>
+    <div class="film_item">
+      <P class="item_label"><%= t('activerecord.attributes.film.genre') %>:<br></p>
+      <p class="item_detail"><%= @film.genre %></p>
+    </div>
 
-<div>
-  <P>現在この映画の上映権を持っている人:</p>
-  <% @film.bookings.each do |booking| %>
-    <span><%= link_to booking.client.name, client_path(client_id: booking.client.id) %></span>
-  <% end %>
-</div>
+    <div class="film_item">
+      <P class="item_label">現在この映画の上映権を持っている人:</p>
+      <% @film.bookings.each do |booking| %>
+        <p class="item_detail"><span><%= link_to booking.client.name, client_path(client_id: booking.client.id) %></span></p>
+      <% end %>
+    </div>
 
 
-<% if client_signed_in? %>
-  <div class="client_item">
-    <p class="client_item_label"></p>
-    <% if @booking.present? %>
-      <%= link_to '上映権終了を申告する', booking_path(id: @booking.id), method: :delete, class: "booking_link" %>
-    <% else %>
-      <%= link_to '上映できることを明らかにします', bookings_path(film_id: @film.id), method: :post, class: "booking_link" %>
+    <div class="link_area">
+    <% if client_signed_in? %>
+        <% if @booking.present? %>
+          <p class="booking_or_release"><%= link_to '！上映権終了を申告する', booking_path(id: @booking.id), method: :delete, class: "booking_link" %></p>
+        <% else %>
+          <p class="booking_or_release"><%= link_to '！上映できることを明らかにします', bookings_path(film_id: @film.id), method: :post, class: "booking_link" %></p>
+        <% end %>
+
+        <p><span class="to_other_page"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path(client_id: current_client.id, right_holder_id: @film.right_holder_id), method: :post, class: "send_message" %></span>
+        <span class="to_other_page"><%= link_to t('view.logout'), destroy_client_session_path, method: :delete %></span></p>
+    <% elsif right_holder_signed_in? %>
+      <p><% if current_right_holder.id == @film.right_holder.id %>
+        <span class="to_other_page"><%= link_to t('view.this_page')+t('view.edit'), edit_film_path(@film) %></span>
+      <% end %>
+      <span class="to_other_page"><%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %></span></p>
     <% end %>
 
-    <p class="client_item_detail"><%= link_to t('view.this_right_holder')+t('view.send_message'), conversations_path(client_id: current_client.id, right_holder_id: @film.right_holder_id), method: :post, class: "send_message" %></p>
-    <%= link_to t('view.logout'), destroy_client_session_path, method: :delete %>
-  </div>
-<% elsif right_holder_signed_in? %>
-  <% if current_right_holder.id == @film.right_holder.id %>
-    <%= link_to t('view.this_page')+t('view.edit'), edit_film_path(@film) %>
-  <% end %>
-  <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
-<% end %>
-
-<%= link_to t('view.profile'), right_holder_path(@film.right_holder_id) %>
-<%= link_to t('activerecord.models.film')+t('view.index'), films_path %>
+      <p><span class="to_other_page"><%= link_to t('view.profile'), right_holder_path(@film.right_holder_id) %></span>
+      <span class="to_other_page"><%= link_to t('activerecord.models.film')+t('view.index'), films_path %></span></p>
+    </div>
+</div>
