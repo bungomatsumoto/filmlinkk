@@ -16,7 +16,7 @@ RSpec.describe 'Clients', type: :system do
       password: 'wadada',
       confirmation_token: @token,
       confirmed_at: Time.now )
-    @film = FactoryBot.create(:film, title: '映画a', intro: 'イントロダクション', production_year: 1998, right_holder: @right_holder)
+    @film = FactoryBot.create(:film, title: '映画a', intro: 'イントロダクション', production_year: 1998, right_holder: @right_holder1)
     @client = FactoryBot.create(
       :client,
       name: '田沢',

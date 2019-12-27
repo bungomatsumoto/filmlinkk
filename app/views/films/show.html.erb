@@ -63,5 +63,5 @@
   <%= link_to t('view.logout'), destroy_right_holder_session_path, method: :delete %>
 <% end %>
 
-<%= link_to t('view.profile'), right_holder_path(right_holder_id: @film.right_holder_id) %>
+<%= link_to t('view.profile'), right_holder_path(@film.right_holder_id) %>
 <%= link_to t('activerecord.models.film')+t('view.index'), films_path %>
